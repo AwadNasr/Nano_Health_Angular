@@ -1,0 +1,37 @@
+<div class="py-5">
+  <button class="bg-primary-outline-btn p-2 " (click)="addItem()">Add Logs</button>
+  <table class="table table-responsive table-hover">
+    <tr class="tableHeader">
+        <td>Service </td>
+        <td>Level</td>
+        <td>Message </td>
+        <td >StorageType</td>
+        <td >Timestamp</td>
+    </tr>
+     <tr class="mt-3">
+        <td colspan="7"></td>
+     </tr>
+    <tbody class="tableData" style="color: black !important;" *ngFor="let item of logs.data | paginate:
+    { id: 'foo', itemsPerPage: 10, currentPage:p, totalItems: logs.total};let i = index">
+    <tr id="first_{{i}}">
+        <td class="table-date" style="cursor: pointer;" >{{item.service}}</td>
+        <td class="table-date" style="cursor: pointer;">{{item.level}}</td>
+        <td class="table-date" style="cursor: pointer;" >{{item.message}}</td>
+        <td class="table-date" style="cursor: pointer;" >{{item.backendStorageType}}</td>
+        <td class="table-date" style="cursor: pointer;" >{{item.timestamp | date: 'dd/MM/yyyy' }}</td>
+    </tr>
+</tbody>
+</table>
+<div *ngIf="logs.total==0 " class="emptyData">  No Logs Found  . . .</div>
+
+
+<div class="row my-5 mb-1 m-0" >
+  <div class="d-flex align-items-center justify-content-center">
+    <div>
+      <pagination-controls (pageChange)="p=$event" id="foo" nextLabel="" previousLabel=""></pagination-controls>
+    </div>
+
+  </div>
+</div>
+<div class="text-center" > Total  : {{logs.total}}</div>
+</div>

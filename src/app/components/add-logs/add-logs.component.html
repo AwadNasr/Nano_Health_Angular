@@ -1,0 +1,54 @@
+<div class="text-end p-2">
+  <img (click)="closeDialog()" class="d-pointer" src="assets/close_dialog.svg" alt="">
+</div>
+<div class="pop-up-container">
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="mb-3">
+          <label class="input-label" for="Service">Service</label>
+          <input formControlName="Service" type="text" name="Service" id="Service"
+              [class.is-invalid]="Service?.invalid && Service?.touched" [class.is-valid]="Service?.valid"
+              class="form-control my-1">
+          <div *ngIf="Service?.errors && Service?.touched">
+              <small *ngIf="Service?.hasError('required')" class="text-danger"> service is required</small>
+          </div>
+      </div>
+
+
+      <div class="mb-3">
+          <label class="input-label" for="Level"></label>
+          <select formControlName="Level" name="Level" id="Level"
+          [class.is-invalid]="Level?.invalid && Level?.touched"
+          [class.is-valid]="Level?.valid"
+          class="form-select my-1">
+    <option value="" disabled selected>Select a service</option>
+    <option  value="info">Info </option>
+    <option  value="warning">Warning</option>
+    <option  value="error">Error</option>
+  </select>
+          <div *ngIf="Level?.errors && Level?.touched">
+              <small *ngIf="Level?.hasError('required')"  class="text-danger">level is required</small>
+          </div>
+      </div>
+      <div class="mb-3">
+        <label class="input-label" for="Message">Message  </label>
+        <input formControlName="Message" type="text" name="Message" id="Message"
+            [class.is-invalid]="Message?.invalid && Message?.touched" [class.is-valid]="Message?.valid"
+            class="form-control my-1">
+        <div *ngIf="Message?.errors && Message?.touched">
+            <small *ngIf="Message?.hasError('required')" class="text-danger">message is required </small>
+        </div>
+    </div>
+    <div class="mb-3">
+      <label class="input-label" for="Timestamp">Timestamp</label>
+      <input formControlName="Timestamp" type="date" name="Timestamp" id="Timestamp"
+          [class.is-invalid]="Timestamp?.invalid && Timestamp?.touched" [class.is-valid]="Timestamp?.valid"
+          class="form-control my-1">
+      <div *ngIf="Timestamp?.errors && Timestamp?.touched">
+          <small *ngIf="Timestamp?.hasError('required')" class="text-danger">timestamp is required</small>
+      </div>
+  </div>
+      <button type="submit" routerLink="#" class="bg-primary-outline-btn my-3 mb-4 p-2">Save</button>
+  </form>
+</div>
+

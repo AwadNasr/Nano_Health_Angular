@@ -1,0 +1,75 @@
+<div class="py-4">
+
+  <form class="w-75 m-auto " (ngSubmit)="handleRegister(registerForm)" [formGroup]="registerForm">
+    <h2 class="display-4 text-main mb-3">Register : </h2>
+    <div class="wave-group my-3">
+      <input  type="text" class="input" formControlName="FName">
+      <span class="bar"></span>
+      <label class="label">
+        <span class="label-char" style="--index: 0">F</span>
+        <span class="label-char" style="--index: 1">N</span>
+        <span class="label-char" style="--index: 2">a</span>
+        <span class="label-char" style="--index: 3">m</span>
+        <span class="label-char" style="--index: 4">e</span>
+      </label>
+      <div class="alert alert-danger" *ngIf="registerForm.get('FName')?.errors && registerForm.get('FName')?.touched">
+        <p *ngIf="registerForm.get('FName')?.getError('required')" class="m-0 p-0">First Name is required</p>
+      </div>
+    </div>
+    <div class="wave-group my-3">
+      <input  type="text" class="input" formControlName="LName">
+      <span class="bar"></span>
+      <label class="label">
+        <span class="label-char" style="--index: 0">L</span>
+        <span class="label-char" style="--index: 1">N</span>
+        <span class="label-char" style="--index: 2">a</span>
+        <span class="label-char" style="--index: 3">m</span>
+        <span class="label-char" style="--index: 4">e</span>
+      </label>
+      <div class="alert alert-danger" *ngIf="registerForm.get('LName')?.errors && registerForm.get('LName')?.touched">
+        <p *ngIf="registerForm.get('LName')?.getError('required')" class="m-0 p-0">Last Name is required</p>
+      </div>
+    </div>
+    <div class="wave-group my-3">
+      <input  type="email" class="input" formControlName="Email">
+      <span class="bar"></span>
+      <label class="label">
+        <span class="label-char" style="--index: 0">E</span>
+        <span class="label-char" style="--index: 1">m</span>
+        <span class="label-char" style="--index: 2">a</span>
+        <span class="label-char" style="--index: 3">i</span>
+        <span class="label-char" style="--index: 4">l</span>
+      </label>
+      <div class="alert alert-danger mt-4" *ngIf="registerForm.get('Email')?.errors && registerForm.get('Email')?.touched">
+        <p *ngIf="registerForm.get('Email')?.getError('required')" class="m-0 p-0">Email is required</p>
+        <p *ngIf="registerForm.get('Email')?.getError('Email')" class="m-0 p-0">Email not valid</p>
+      </div>
+    </div>
+    <div class="wave-group my-3">
+      <input  type="password" class="input" formControlName="Password">
+      <span class="bar"></span>
+      <label class="label">
+        <span class="label-char" style="--index: 0">P</span>
+        <span class="label-char" style="--index: 1">a</span>
+        <span class="label-char" style="--index: 2">s</span>
+        <span class="label-char" style="--index: 3">s</span>
+        <span class="label-char" style="--index: 4">w</span>
+        <span class="label-char" style="--index: 5">o</span>
+        <span class="label-char" style="--index: 6">r</span>
+        <span class="label-char" style="--index: 7">d</span>
+      </label>
+      <div class="alert alert-danger mt-2" *ngIf="registerForm.get('Password')?.errors && registerForm.get('Password')?.touched">
+        <p *ngIf="registerForm.get('Password')?.getError('required')" class="m-0 p-0">Password is required</p>
+        <p *ngIf="registerForm.get('Password')?.getError('pattern')" class="m-0 p-0">Password must contain at least 1 from (uppercase,lowercas,number,symbol)</p>
+      </div>
+    </div>
+
+    <button class="cssbuttons-io-button " type="submit" [disabled]="registerForm.invalid"> <span *ngIf="!isLoading">Submit</span>
+      <div class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path></svg>
+      </div>
+      <i *ngIf='isLoading' class="fa-solid fa-spinner fa-spin"></i>
+    </button>
+  </form>
+</div>
+
